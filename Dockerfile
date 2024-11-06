@@ -4,8 +4,12 @@ FROM python:3.9-slim
 # Set the working directory to /app
 WORKDIR /app
 
-# Install system dependencies required by OpenCV
+# Install necessary system libraries
 RUN apt-get update && apt-get install -y \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
     libgl1-mesa-glx \
     && rm -rf /var/lib/apt/lists/*
 
@@ -22,5 +26,4 @@ EXPOSE 8000
 ENV PORT 8000
 
 # Run app when the container launches
-CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:${PORT:-8000}"]
-
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:${PORT:-8000}"]
