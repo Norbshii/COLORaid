@@ -1,5 +1,5 @@
 Flask
-opencv-python
+opencv-python==4.5.2.54
 python-dotenv
 flask-cors
 pyrebase4
