@@ -1,4 +1,5 @@
 Flask
+opencv-python
 python-dotenv
 flask-cors
 pyrebase4
