@@ -22,4 +22,5 @@ EXPOSE 8000
 ENV PORT 8000
 
 # Run app when the container launches
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:${PORT:-8000}"]
+CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:${PORT:-8000}"]
+
