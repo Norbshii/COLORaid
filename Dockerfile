@@ -26,4 +26,8 @@ EXPOSE 8000
 ENV PORT 8000
 
 # Run app when the container launches
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:${PORT:-8080}"]
+CMD gunicorn app:app --bind 0.0.0.0:${PORT:-8080}
+
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+CMD ["entrypoint.sh"]
